@@ -9,13 +9,15 @@ export class Presentation {
     list() {
         let element = <HTMLInputElement>document.querySelector("#app");
 
-        this.service.list().then(collegues => {
+        this.service.list()
+            .then(collegues => {
             collegues.forEach(col => {
-                const div = <HTMLInputElement>document.createElement('div')
-                div.textContent = `ID : ${col.id} Nom : ${col.nom} Prenom : ${col.prenom}`;
-                element.appendChild(div)
+                    const div = <HTMLInputElement>document.createElement('div')
+                    div.textContent = `[ID] : ${col.id} --[Nom] : ${col.nom} -- [Prenom] : ${col.prenom}`;
+                    element.appendChild(div)
+                })
             })
-        })
+            .catch(err => console.error(err))
     }
 
     create() {
@@ -25,8 +27,7 @@ export class Presentation {
         button.addEventListener("click", () => {
             this.service.create({nom: nom.value, prenom: prenom.value})
                 .then(colCree => document.location.reload())
+                .catch(err => console.error(err))
         })
-
-
     }
 }

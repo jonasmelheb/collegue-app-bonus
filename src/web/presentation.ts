@@ -6,8 +6,7 @@ export class Presentation {
     ) {
     }
 
-    demarrer() {
-
+    list() {
         let element = <HTMLInputElement>document.querySelector("#app");
 
         this.service.list().then(collegues => {
@@ -17,6 +16,17 @@ export class Presentation {
                 element.appendChild(div)
             })
         })
+    }
+
+    create() {
+        const nom = <HTMLInputElement>document.querySelector("#nom");
+        const prenom = <HTMLInputElement>document.querySelector("#prenom");
+        const button = <HTMLInputElement>document.querySelector("#button")
+        button.addEventListener("click", () => {
+            this.service.create({nom: nom.value, prenom: prenom.value})
+                .then(colCree => document.location.reload())
+        })
+
 
     }
 }

@@ -4,7 +4,9 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "ts-node src/console/index.ts"
+    "start": "ts-node src/console/index.ts",
+    "web:serve": "webpack serve --mode development",
+    "web:build": "webpack"
   },
   "keywords": [],
   "author": "",
